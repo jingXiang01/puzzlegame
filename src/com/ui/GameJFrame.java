@@ -36,6 +36,10 @@ public class GameJFrame extends JFrame implements KeyListener , ActionListener {
     JMenuItem closeItem = new JMenuItem("关闭游戏");
 
     JMenuItem accountItem = new JMenuItem("公众号");
+    //创建JMenuItem的对象
+    JMenuItem girl = new JMenuItem("美女");
+    JMenuItem animal = new JMenuItem("动物");
+    JMenuItem sport = new JMenuItem("运动");
     public GameJFrame() {
         //初始化界面
         initJFrame();
@@ -123,6 +127,7 @@ public class GameJFrame extends JFrame implements KeyListener , ActionListener {
         //创建菜单上面的两个选项的对象（功能 关于我们）
         JMenu functionJMenu = new JMenu("功能");
         JMenu aboutJMenu = new JMenu("关于我们");
+        JMenu changeImage = new JMenu("更换图片");
 
 
 
@@ -133,15 +138,22 @@ public class GameJFrame extends JFrame implements KeyListener , ActionListener {
 
         aboutJMenu.add(accountItem);
 
+        changeImage.add(girl);
+        changeImage.add(animal);
+        changeImage.add(sport);
+
         //给条目绑定事件
         replayItem.addActionListener(this);
         reLoginItem.addActionListener(this);
         closeItem.addActionListener(this);
         accountItem.addActionListener(this);
+        girl.addActionListener(this);
+        animal.addActionListener(this);
+        sport.addActionListener(this);
         //将菜单里面的两个选项添加到菜单当中
         jMenuBar.add(functionJMenu);
         jMenuBar.add(aboutJMenu);
-
+        jMenuBar.add(changeImage);
         //给整个界面设置菜单
 
         this.setJMenuBar(jMenuBar);
@@ -307,6 +319,24 @@ public class GameJFrame extends JFrame implements KeyListener , ActionListener {
             //弹框不关闭无法操作下面的界面
             jDialog.setModal(true);
             jDialog.setVisible(true);
+        } else if (obj == girl) {
+            int num = new Random().nextInt(12) + 1;
+            path = "image\\girl\\girl"+ num +"\\";
+            step = 0;
+            initData();
+            initImage();
+        } else if (obj == animal) {
+            int num = new Random().nextInt(7) + 1;
+            path = "image\\animal\\animal"+ num +"\\";
+            step = 0;
+            initData();
+            initImage();
+        } else if (obj == sport) {
+            int num = new Random().nextInt(9) + 1;
+            path = "image\\sport\\sport"+ num +"\\";
+            step = 0;
+            initData();
+            initImage();
         }
     }
 }
